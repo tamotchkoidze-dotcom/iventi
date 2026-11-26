@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>მომღერლები | დაუვიწყარი ივენთი!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-scale">
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html">დაუვიწყარი <span>ივენთი!</span></a>
+    <ul class="nav">
+      <li><a href="index.html">ჩვენს შესახებ</a></li>
+      <li><a href="events.html">ივენთები</a></li>
+      <li><a href="singers.html" aria-current="page">მომღერლები</a></li>
+      <li><a href="dancers.html">მოცეკვავეები</a></li>
+      <li><a href="contact.html">კონტაქტი</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="singers">
+    <div class="container">
+      <h2>აირჩიეთ მომღერალი (4 ვარიანტი)</h2>
+      <div class="grid">
+        <article class="card choice"><img src="images/666 Melody.jpg" alt="ნინო Melody"><h3>ნინო Melody</h3><p>რომანტიკული ბალადები და საქორწილო შესრულება.</p><span class="tag">სტილი: პოპ/ბალადა</span></article>
+        <article class="card choice"><img src="images/777 Voice.jpg" alt="გიორგი Voice"><h3>გიორგი Voice</h3><p>ცოცხალი ენერგია და საცეკვაო ჰიტები საღამოსთვის.</p><span class="tag">სტილი: პოპ/დენსი</span></article>
+        <article class="card choice"><img src="images/888 Jazz.jpg" alt="მარიამი Jazz"><h3>მარიამი Jazz</h3><p>ჯაზური და Lounge შესრულება რესტორნის ატმოსფეროსთვის.</p><span class="tag">სტილი: ჯაზი</span></article>
+        <article class="card choice"><img src="images/999 Live.jpg" alt="ლუკა Live"><h3>ლუკა Live</h3><p>ქართულ და თანამედროვე რეპერტუარში მრავალფეროვანი შოუ.</p><span class="tag">სტილი: ქავერი/লাইვი</span></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>დაუვიწყარი ივენთი!</strong></p>
+    <p>ტელ: +995 ******** | ელ-ფოსტა: info@dauviwyari-event.ge</p>
+    <p>© 2026 ყველა უფლება დაცულია</p>
+  </div>
+</footer>
+  <div class="resize-edge" id="resizeHandle" title="გაწიე მობილურის ზომამდე" aria-label="გვერდის სიგანის შეცვლა"></div>
+</div>
+<script>
+  (function () {
+    var handle = document.getElementById('resizeHandle');
+    var page = document.querySelector('.page-scale');
+    var dragging = false;
+
+    function setWidth(clientX) {
+      var rect = page.getBoundingClientRect();
+      var left = rect.left;
+      var width = Math.min(window.innerWidth - left - 8, Math.max(320, clientX - left));
+      page.style.maxWidth = width + 'px';
+    }
+
+    handle.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      handle.setPointerCapture(e.pointerId);
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'ew-resize';
+    });
+
+    handle.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      setWidth(e.clientX);
+    });
+
+    function stop(e) {
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+      try { handle.releasePointerCapture(e.pointerId); } catch (err) {}
+    }
+
+    handle.addEventListener('pointerup', stop);
+    handle.addEventListener('pointercancel', stop);
+
+    handle.addEventListener('dblclick', function () {
+      page.style.maxWidth = '320px';
+    });
+  })();
+</script>
+</body>
+</html>

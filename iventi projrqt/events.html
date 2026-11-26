@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ივენთები | დაუვიწყარი ივენთი!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-scale">
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html">დაუვიწყარი <span>ივენთი!</span></a>
+    <ul class="nav">
+      <li><a href="index.html">ჩვენს შესახებ</a></li>
+      <li><a href="events.html" aria-current="page">ივენთები</a></li>
+      <li><a href="singers.html">მომღერლები</a></li>
+      <li><a href="dancers.html">მოცეკვავეები</a></li>
+      <li><a href="contact.html">კონტაქტი</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="events">
+    <div class="container">
+      <h2>გაკეთებული ივენთები და სარჩევი</h2>
+      <div class="grid">
+        <article class="card"><img src="images/111.jpg" alt="ღამის ბარი"><h3>ღამის ბარი</h3><p>ნეონ განათება, მინი სცენა და თავისუფალი სივრცე.</p><p><span class="tag">ყვავილები: ორქიდეა</span><span class="tag">გაფორმება: მოდერნი</span><span class="tag">ასაკი: 18+</span></p></article>
+        <article class="card"><img src="images/222.jpg" alt="რესტორანი"><h3>რესტორნის ღონისძიება</h3><p>ელეგანტური სუფრები, სანთლები და კლასიკური სტილი.</p><p><span class="tag">ყვავილები: ვარდები</span><span class="tag">გაფორმება: კლასიკური</span><span class="tag">ასაკი: ყველა</span></p></article>
+        <article class="card"><img src="images/333.jpg" alt="დიდი ზალა"><h3>დიდი ზალა</h3><p>ფართო დარბაზი, სცენა და გრანდიოზული დეკორაციები.</p><p><span class="tag">ყვავილები: პიონი</span><span class="tag">გაფორმება: სადღესასწაულო</span><span class="tag">ასაკი: ოჯახური</span></p></article>
+        <article class="card"><img src="images/444.jpg" alt="საქორწილო გაფორმება"><h3>საქორწილო გაფორმება</h3><p>თეთრი და ვარდისფერი ტონები, რკალი და სინათლე.</p><p><span class="tag">ყვავილები: ტიტა, ვარდი</span><span class="tag">ასაკი: ყველა</span></p></article>
+        <article class="card"><img src="images/555.jpg" alt="დაბადების დღე"><h3>სადღესასწაულო წვეულება</h3><p>თემატური ბუშტები, ტკბილეულის კუთხე და ფერადი დეკორი.</p><p><span class="tag">ყვავილები: გერბერა</span><span class="tag">ასაკი: 7–16</span></p></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>დაუვიწყარი ივენთი!</strong></p>
+    <p>ტელ: +995 ******** | ელ-ფოსტა: info@dauviwyari-event.ge</p>
+    <p>© 2026 ყველა უფლება დაცულია</p>
+  </div>
+</footer>
+  <div class="resize-edge" id="resizeHandle" title="გაწიე მობილურის ზომამდე" aria-label="გვერდის სიგანის შეცვლა"></div>
+</div>
+<script>
+  (function () {
+    var handle = document.getElementById('resizeHandle');
+    var page = document.querySelector('.page-scale');
+    var dragging = false;
+
+    function setWidth(clientX) {
+      var rect = page.getBoundingClientRect();
+      var left = rect.left;
+      var width = Math.min(window.innerWidth - left - 8, Math.max(320, clientX - left));
+      page.style.maxWidth = width + 'px';
+    }
+
+    handle.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      handle.setPointerCapture(e.pointerId);
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'ew-resize';
+    });
+
+    handle.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      setWidth(e.clientX);
+    });
+
+    function stop(e) {
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+      try { handle.releasePointerCapture(e.pointerId); } catch (err) {}
+    }
+
+    handle.addEventListener('pointerup', stop);
+    handle.addEventListener('pointercancel', stop);
+
+    handle.addEventListener('dblclick', function () {
+      page.style.maxWidth = '320px';
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>დაუვიწყარი ივენთი!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-scale">
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html">დაუვიწყარი <span>ივენთი!</span></a>
+    <ul class="nav">
+      <li><a href="index.html" aria-current="page">ჩვენს შესახებ</a></li>
+      <li><a href="events.html">ივენთები</a></li>
+      <li><a href="singers.html">მომღერლები</a></li>
+      <li><a href="dancers.html">მოცეკვავეები</a></li>
+      <li><a href="contact.html">კონტაქტი</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="about">
+    <div class="container">
+      <h1>საქორწილო და სადღესასწაულო ივენთების მოწყობა</h1>
+      <p>„დაუვიწყარი ივენთი!“ გეხმარებათ თქვენი განსაკუთრებული დღის იდეალურად დაგეგმვასა და ორგანიზებაში — ემოციებით, სტილითა და დეტალებზე ზრუნვით.</p>
+      <a class="btn pulse" href="events.html">ნახეთ ჩვენი ივენთები</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about">
+      <div class="about-box card">
+        <h2>ჩვენს შესახებ</h2>
+        <p>ჩვენ ვართ გუნდი, რომელიც ქმნის უნიკალურ ატმოსფეროს ქორწილებისთვის, დაბადების დღეებისთვის და ნებისმიერ სადღესასწაულო ღონისძიებისთვის. გთავაზობთ სრულ მომსახურებას: კონცეფციიდან გაფორმებამდე.</p>
+        <p>ჩვენი მიზანია, თითოეული ღონისძიება გახდეს თბილი, ლამაზი და მართლაც დაუვიწყარი გამოცდილება თქვენთვის და თქვენი სტუმრებისთვის.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="icon">💍</div><h3>ქორწილები</h3><p>რომანტიკული და დახვეწილი გარემო.</p></div>
+        <div class="card"><div class="icon">🎉</div><h3>სადღესასწაულო</h3><p>მხიარული და ხალხმრავალი ივენთები.</p></div>
+        <div class="card"><div class="icon">✨</div><h3>დეკორაცია</h3><p>ყვავილები და თემატური გაფორმება.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>დაუვიწყარი ივენთი!</strong></p>
+    <p>ტელ: +995 ******** | ელ-ფოსტა: info@dauviwyari-event.ge</p>
+    <p>© 2026 ყველა უფლება დაცულია</p>
+  </div>
+</footer>
+  <div class="resize-edge" id="resizeHandle" title="გაწიე მობილურის ზომამდე" aria-label="გვერდის სიგანის შეცვლა"></div>
+</div>
+<script>
+  (function () {
+    var handle = document.getElementById('resizeHandle');
+    var page = document.querySelector('.page-scale');
+    var dragging = false;
+
+    function setWidth(clientX) {
+      var rect = page.getBoundingClientRect();
+      var left = rect.left;
+      var width = Math.min(window.innerWidth - left - 8, Math.max(320, clientX - left));
+      page.style.maxWidth = width + 'px';
+    }
+
+    handle.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      handle.setPointerCapture(e.pointerId);
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'ew-resize';
+    });
+
+    handle.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      setWidth(e.clientX);
+    });
+
+    function stop(e) {
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+      try { handle.releasePointerCapture(e.pointerId); } catch (err) {}
+    }
+
+    handle.addEventListener('pointerup', stop);
+    handle.addEventListener('pointercancel', stop);
+
+    handle.addEventListener('dblclick', function () {
+      page.style.maxWidth = '320px';
+    });
+  })();
+</script>
+</body>
+</html>
